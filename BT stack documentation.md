@@ -37,6 +37,12 @@ Now that you have a grasp on the general stack structure, here I list some commo
 Link to Anthony's github repo:
 https://github.com/global-trade-alert/anthony_osei
 
+Main pipeline for Anthony:
+https://docs.google.com/spreadsheets/d/1suAzHpHkiGB142AZonr2_1_6zEY_zjPeLdhJ-3s7HgE/edit#gid=864363600
+
+Input pipeline filled out by DPA editors:
+https://docs.google.com/spreadsheets/d/12Zm93SpquTiYbyARCMzKq3x9Eh4ZkvZ-h8S2EtmXHas/edit#gid=1321738403
+
 * Input pipelines
 * Scraper templates
 * Communicating with Anthony and reviewing
