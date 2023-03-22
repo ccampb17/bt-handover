@@ -46,9 +46,10 @@ https://docs.google.com/spreadsheets/d/12Zm93SpquTiYbyARCMzKq3x9Eh4ZkvZ-h8S2EtmX
 Process summary:
 1. Editors add links to the pipeline.
 2. You send them to Anthony by copying them into his pipeline sheet. Usually I would do max 10 at a time to prevent overloading him (and making sure he always has something to do).
-3. He will notify you when he's done them and if he has any questions or issues. You should go through each one and check it's getting the correct results - often differences occur just due to links being accessed from a different location.
+3. He will notify you when he's done them and if he has any questions or issues.
+4. Pull the repo. You should go through each new scraper and check it's getting the correct results - often differences occur just due to links being accessed from a different location.
 4. When reviewed, you can give feedback to Anthony. Then remove the files from the 'in review' folder and put them in the 'finished' folder. Anthony knows what he is doing, so 99% of the time it's fine. But on occasion he may miss something (as we would all do when making so many scrapers). Always good to have two sets of eyes.
-5. Also put the files in the relevant dropbox folders (GTA: `code/daily/running`; DPA: `code/BT-Lumiere scrapers/scrapers`). When they are synced to the server, they should automatically start running.
+5. Also put the files in the relevant dropbox folders (GTA: `code/daily/running`; DPA: `code/BT-Lumiere scrapers/scrapers`). When they are synced to the server, they should automatically start running through the cronjobs.
 
 
 ## AWS stack
@@ -70,10 +71,6 @@ http://ricardo-api-dev.eu-west-1.elasticbeanstalk.com/bastiat/bt_leads_core_fron
 	Then pressing ctrl+end to get to the bottom and see what it is (or isn't) doing.
 4. Where the frontend is
 	https://github.com/global-trade-alert/ricardo-api/tree/development/src/apps/bastiat/templates
-5. How the classifier works
-	I think you know this better than me ;)
-6. How to upload new models
-	You can putty (or whatever) into the instance and put the files directly in the relevant dir: `/usr/share/bastiat/best_model/...`
 
 
 
@@ -90,3 +87,15 @@ Directly relevant DB tables:
 `gta_url_log`
 `gta_measure_url`
 `gta_url_status_list`
+
+
+## Emailers
+Can be found at:
+* `cron/scraper status emailer.R`
+* `cron/summary emailer.R`
+
+These were the result of a long struggle to get emails working again on the R server.
+
+They are a stopgap solution to not having a dashboard summarising the scraper statuses. Emails are sent to users based on their subscription on the leads page.
+
+They use a package called Blastula, which can load in SMTP credentials and send emails through its API. It uses Frédéric's email account to do this.
